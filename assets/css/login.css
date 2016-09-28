@@ -1,0 +1,63 @@
+#para_forget
+{
+    text-decoration: none;
+    color:#004D40;
+    margin-top: 8px;
+    font-size: 12px;  
+}
+.panel-footer
+{
+    background-color: #004D40;
+    color: #CFD8DC;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+}
+.sub_topic
+{
+    color: white;
+    font-size:14px;
+}
+#btn_login
+{
+    background-color: #004D40;
+    color: white;
+}
+#btn_login:hover
+{
+    background-color: #009688;
+}
+
+body
+{font-family: 'Source Sans Pro', sans-serif;background-image: url('http://fourgenius.com/ayolan_src/images/login/back.jpg');background-repeat: none;}
+.panel{border:1px solid #004D40;}
+#column-right
+{
+    float: right;
+    margin-top: 90px;
+}
+.log-wap
+{
+    width: 350px;
+    height: 350px;
+    margin-top: 85px;
+    margin-left: 130px;
+}
+#footer
+{
+    background-color:#004D40;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+    margin-top: 112px;
+}
+#footer-caption
+{
+    color: #0277BD;
+    text-decoration: none;
+}
+#footer-caption:hover
+{
+    color: #002166;
+}

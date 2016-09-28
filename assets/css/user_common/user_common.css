@@ -1,0 +1,20 @@
+body
+{
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #ECEFF1;
+}
+#custcontinue
+{
+    background-color: #424242;
+    color: white;
+    margin-top: 25px;
+}
+#custcontinue:hover
+{
+    background-color: #455A64;
+}
+#panelheading
+{
+    background: #424242;
+    color: white;          
+}

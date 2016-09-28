@@ -1,0 +1,57 @@
+body
+{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.modal-backdrop {
+    z-index: -1;
+}
+ul {
+    list-style-type: square;
+    list-style-position: outside;
+    list-style-image: none;
+}
+#cviewbuttons
+{
+    background-color: #009688;
+    color: white;
+
+}
+#cviewbuttons:hover
+{
+    background-color: #004D40;
+}
+#panelheading
+{
+    background: #009688;
+    color: white;          
+}
+#custcontinue
+{
+    background-color: #009688;
+    color: white;
+    float: right;
+}
+#custcontinue:hover
+{
+    background-color: #004D40;
+}
+#backregister
+{
+    background-color: #009688;
+    color: white;
+    float: right;
+    margin-right: 12px;
+}
+#backregister:hover
+{
+    background-color: #004D40;
+}
+#cservicebtn
+{
+    background-color: #009688;
+    color: white;
+}
+#cservicebtn:hover
+{
+    background-color: #004D40;
+}
