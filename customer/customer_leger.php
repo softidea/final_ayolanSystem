@@ -237,9 +237,10 @@ $rental = "";
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        <?php $i=0;?>
                                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                                            <tr >
+                                            <?php $i++;?>
+                                        <tr onload="check();" >
 
 
                                                 <td><?php echo $row['paid_date'] ?></td>
@@ -248,7 +249,7 @@ $rental = "";
                                                 <td><?php echo $row['customer_due'] ?></td>
                                                 <td><?php echo $row['company_due'] ?></td>
                                                 <td id="nedate"></td>
-                                                <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due'] ?></td>
+                                                <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due']+$rental ?></td>
 
                                             </tr>
 

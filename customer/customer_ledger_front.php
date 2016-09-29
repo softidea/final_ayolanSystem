@@ -114,6 +114,7 @@ $st = "";
 //                            document.getElementById('requiredpayment').value = res_arr[8];
 //                            document.getElementById('maximumpayment').value = res_arr[5];
 //                            document.getElementById('total_payable_installements').value = res_arr[6];
+                           
                         }
                     }
                 }
@@ -142,28 +143,28 @@ $st = "";
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <?php
-                            if (isset($_POST['search'])) {
+                        if (isset($_POST['search'])) {
 
-                                $sql_query = "SELECT a.cus_fullname,c.vehicle_no,a.cus_address,c.`description`,c.`ser_status`,c.`fix_rate`,c.`installment`,c.`period` FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE c.`ser_number`='" . $_POST['customer_search_bar'] . "'";
-                                $cus_seid= $_POST['customer_search_bar'];
-                                $run_query = mysqli_query($d_bc, $sql_query);
-                                while ($row_query = mysqli_fetch_array($run_query)) {
-                                    $name = $row_query['cus_fullname'];
-                                    $address = $row_query['cus_address'];
-                                    if ($row_query['ser_status'] == 1) {
-                                        $status = "Active";
-                                    } else {
-                                        $status = "Deactive";
-                                    }
-                                    $facility = $row_query['description'];
-                                    $vno = $row_query['vehicle_no'];
-                                    $capital = $row_query['fix_rate'];
-                                    $rental_no = $row_query['period'];
-                                    $rental = $row_query['installment'];
+                            $sql_query = "SELECT a.cus_fullname,c.vehicle_no,a.cus_address,c.`description`,c.`ser_status`,c.`fix_rate`,c.`installment`,c.`period` FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE c.`ser_number`='" . $_POST['customer_search_bar'] . "'";
+                            $cus_seid = $_POST['customer_search_bar'];
+                            $run_query = mysqli_query($d_bc, $sql_query);
+                            while ($row_query = mysqli_fetch_array($run_query)) {
+                                $name = $row_query['cus_fullname'];
+                                $address = $row_query['cus_address'];
+                                if ($row_query['ser_status'] == 1) {
+                                    $status = "Active";
+                                } else {
+                                    $status = "Deactive";
                                 }
-                                $st = 1;
+                                $facility = $row_query['description'];
+                                $vno = $row_query['vehicle_no'];
+                                $capital = $row_query['fix_rate'];
+                                $rental_no = $row_query['period'];
+                                $rental = $row_query['installment'];
                             }
-                            ?>
+                            $st = 1;
+                        }
+                        ?>
                         <div class="panel-heading" id="panelheading">
                             <h3 class="panel-title">Transaction History - Finance No <?php echo $cus_seid; ?></h3>
                         </div>
@@ -177,7 +178,7 @@ $st = "";
                                     </div>
                                 </div>
                             </form>
-                            
+
                             <div class="col-sm-6">
 
                                 <fieldset id="account">
@@ -242,14 +243,14 @@ $st = "";
                                     <?php
                                     if ($st == 1) {
 
-                                      
+
                                         $sql_query_table = "SELECT `int_id`,`paid_date`,`payment`,`customer_due`,`company_due` FROM `ser_installment` WHERE `ser_number`='" . $cus_seid . "'";
                                         $result = mysqli_query($d_bc, $sql_query_table);
                                         ?>
-                                        <tbody>
+                                        <tbody id="tb">
 
                                             <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                                                <tr >
+                                                <tr id="one">
 
 
                                                     <td><?php echo $row['paid_date'] ?></td>
@@ -258,7 +259,7 @@ $st = "";
                                                     <td><?php echo $row['customer_due'] ?></td>
                                                     <td><?php echo $row['company_due'] ?></td>
                                                     <td id="nedate"></td>
-                                                    <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due'] ?></td>
+                                                    <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due']+$rental ?></td>
 
                                                 </tr>
 
@@ -289,22 +290,22 @@ $st = "";
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-        function setServiceOptionPanel()
-        {
-            var sp_value = document.getElementById('input-search-option').value;
-            if (sp_value == 'serviceno')
-            {
-                document.getElementById('cboservice').disabled = false;
+                                            function setServiceOptionPanel()
+                                            {
+                                                var sp_value = document.getElementById('input-search-option').value;
+                                                if (sp_value == 'serviceno')
+                                                {
+                                                    document.getElementById('cboservice').disabled = false;
 
-                alert(sp_value);
-            }
-            else if (sp_value == 'cname' || sp_value == 'tp')
-            {
-                document.getElementById('cboservice').selectedIndex = "0";
-                document.getElementById('cboservice').disabled = true;
-                alert(sp_value);
-            }
-        }
+                                                    alert(sp_value);
+                                                }
+                                                else if (sp_value == 'cname' || sp_value == 'tp')
+                                                {
+                                                    document.getElementById('cboservice').selectedIndex = "0";
+                                                    document.getElementById('cboservice').disabled = true;
+                                                    alert(sp_value);
+                                                }
+                                            }
 
     </script>
 
