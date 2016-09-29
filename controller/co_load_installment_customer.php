@@ -41,7 +41,7 @@ $remainingbalance = filter_input(INPUT_GET, 'remainingbalance');
 
 $settlement_payment = filter_input(INPUT_GET, 'settlement_payment');
 $hidden_ser_number = filter_input(INPUT_GET, 'hidden_ser_number');
-
+$vehicle_no=  filter_input(INPUT_GET, 'ser_no');
 $ser_number=  filter_input(INPUT_GET, 'ser_number');
 $cus_name = filter_input(INPUT_GET, 'cus_name');
 
@@ -88,7 +88,7 @@ if (($saveinstallment != "" && $saveinstallment != null) && ($remainingbalance !
     $_SESSION['p_amount_word']=$p_amount_word = convertNumberToWord($paid_payment);
     $_SESSION['p_amount']=$p_amount = $paid_payment;
     $_SESSION['p_due_amount']=$p_due_amount = ($installment - $paid_payment);
-
+    $_SESSION['ser_no']=$vehicle_no=$vehicle_no;
     
     
     global $conn;
