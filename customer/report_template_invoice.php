@@ -22,6 +22,16 @@ require '../db/newDB.php';
         $p_due_amount = "0.00";
         $p_due_balance = "0.00";
         $p_amount_word = "None";
+        
+        $p_vehicle_number = $_SESSION['ser_no'];
+        $p_service_number =$_SESSION['p_service_number'];
+        $p_cus_name = $_SESSION['p_cus_name'];
+        $p_cus_nic = "None";
+        $p_visit_cost = "0.00";
+        $p_amount = $_SESSION['p_amount'];
+        $p_due_amount = $_SESSION['p_due_amount'];
+        $p_due_balance = "0.00";
+        $p_amount_word = $_SESSION['p_amount_word'];
 
         if (isset($_SESSION['user_username'])) {
             $p_username = $_SESSION['user_username'];
