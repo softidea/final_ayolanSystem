@@ -91,8 +91,16 @@ require_once '../db/newDB.php';
 
 
 
+    
+     <script>
+            function printFunction() {
+                window.print();
+
+            }
+        </script>
+
     </head>
-    <body>
+    <body onload="printFunction()">
         <style>
             div.container {
                 width: 100%;
