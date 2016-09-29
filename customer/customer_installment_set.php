@@ -185,6 +185,9 @@ echo 'alert($cus_seid)';
                             document.getElementById('requiredpayment').value = res_arr[8];
                             document.getElementById('maximumpayment').value = res_arr[5];
                             document.getElementById('total_payable_installements').value = res_arr[6];
+                            
+                            
+                            window.location="report_template_invoice.php";
                         }
                     }
                 }
