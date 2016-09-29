@@ -9,12 +9,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Ayolan Investments</a>
+                <a class="navbar-brand" href="../admin/admin_home.php">Ayolan Investments</a>
 
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="<?php echo('../../user/user_home.php'); ?>" style="text-decoration: none;">Home</a></li>
+                    <li><a href="<?php
+                        if ($_SESSION['user_typel'] == "Admin") {
+                            echo '../admin/admin_home.php';
+                        }
+                        ?>" style="text-decoration: none;">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -40,7 +44,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Installments<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo ('../../customer/customer_installment.php'); ?>" style="text-decoration: none;">Pay Installment</a></li>
-                             <li><a href="<?php echo ('../../land_pawn_payment.php'); ?>" style="text-decoration: none;">Pay Pawn Installment</a></li>
+                            <li><a href="<?php echo ('../../land_pawn_payment.php'); ?>" style="text-decoration: none;">Pay Pawn Installment</a></li>
                             <li><a href="<?php echo ('../../customer/customer_installment.php'); ?>" style="text-decoration: none;">View Installment</a></li>
                             <li><a href="<?php echo ('../../customer/customer_installment.php'); ?>" style="text-decoration: none;">Update Installment</a></li>
                             <li><a href="<?php echo ('../../customer/customer_installment.php'); ?>" style="text-decoration: none;">Settle Service</a></li>

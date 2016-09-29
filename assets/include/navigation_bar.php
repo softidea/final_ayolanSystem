@@ -13,9 +13,15 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="<?php if ($_SESSION['user_typel']=='User') {
-echo '../user/user_home.php';}else if($_SESSION['user_typel']=="Manager"){
-        echo '../user/manager_home.php';};?>" style="text-decoration: none;">Home</a></li>
+                    <li><a href="<?php
+                        if ($_SESSION['user_typel'] == 'User') {
+                            echo '../user/user_home.php';
+                        } else if ($_SESSION['user_typel'] == "Manager") {
+                            echo '../user/manager_home.php';
+                        } else if ($_SESSION['user_typel'] == "Admin") {
+                            echo '../admin/admin_home.php';
+                        }
+                        ?>" style="text-decoration: none;">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -30,8 +36,8 @@ echo '../user/user_home.php';}else if($_SESSION['user_typel']=="Manager"){
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo ('customer_registration.php');?>" style="text-decoration: none;">Add a Lease</a></li>
-                            <li><a href="<?php echo ('customer_addpawn.php');?>" style="text-decoration: none;">Add a Pawn</a></li>
+                            <li><a href="<?php echo ('customer_registration.php'); ?>" style="text-decoration: none;">Add a Lease</a></li>
+                            <li><a href="<?php echo ('customer_addpawn.php'); ?>" style="text-decoration: none;">Add a Pawn</a></li>
                             <li><a href="<?php echo ('customer_serviceview.php'); ?>" style="text-decoration: none;">View Leasings</a></li>
                             <li><a href="<?php echo ('customer_serviceview_land.php'); ?>" style="text-decoration: none;">View Land Pawns</a></li>
                             <li><a href="<?php echo ('customer_installment.php'); ?>" style="text-decoration: none;">Settle Service</a></li>
@@ -49,7 +55,7 @@ echo '../user/user_home.php';}else if($_SESSION['user_typel']=="Manager"){
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Re-Process Management<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                           <li><a href="<?php echo ('../admin/customer/addsis.php'); ?>">Add New Re-process</a></li>
+                            <li><a href="<?php echo ('../admin/customer/addsis.php'); ?>">Add New Re-process</a></li>
                             <li><a href="<?php echo ('../admin/customer/viewsis.php'); ?>">View Re-Process</a></li>
                             <li><a href="<?php echo ('../admin/customer/checksis.php'); ?>">Release Sis</a></li>
                             <li><a href="<?php echo ('../admin/customer/checksis.php'); ?>">Check Re-Process</a></li>
@@ -58,10 +64,10 @@ echo '../user/user_home.php';}else if($_SESSION['user_typel']=="Manager"){
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo ('customer_view.php');?>">Customer Report</a></li>
-                            <li><a href="<?php echo ('customer_serviceview.php');?>">Service Report</a></li>
-                            <li><a href="<?php echo ('customer_installment.php');?>">Installment Report</a></li>
-                            <li><a href="<?php echo ('customer_installment.php');?>">Service Settle Report</a></li>
+                            <li><a href="<?php echo ('customer_view.php'); ?>">Customer Report</a></li>
+                            <li><a href="<?php echo ('customer_serviceview.php'); ?>">Service Report</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>">Installment Report</a></li>
+                            <li><a href="<?php echo ('customer_installment.php'); ?>">Service Settle Report</a></li>
                         </ul>
                     </li>
                 </ul>

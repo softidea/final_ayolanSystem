@@ -206,7 +206,15 @@ require '../db/newDB.php';
         <div class="container">
 
             <header>
-                <a href="../user/user_home.php"><img src="http://ayolaninvestments.com/system/assets/images/admin/ayolan_logo.png" alt="img" style="width: 100px;height: 100px;"/></a>
+                <a href="<?php
+                if ($_SESSION['user_typel'] == 'User') {
+                    echo '../user/user_home.php';
+                } else if ($_SESSION['user_typel'] == "Manager") {
+                    echo '../user/manager_home.php';
+                }else if ($_SESSION['user_typel'] == "Admin") {
+                    echo '../admin/admin_home.php';
+                };
+                ?>"><img src="http://ayolaninvestments.com/system/assets/images/admin/ayolan_logo.png" alt="img" style="width: 100px;height: 100px;"/></a>
 
 
                 <h1 style="font-family: sans-serif,Tahoma, Verdana, Segoe">CUSTOMER INVOICE | AYOLAN INVESTMENTS </h1>
@@ -216,10 +224,10 @@ require '../db/newDB.php';
                     <tr>
                         <td style="width:50px;text-align: right;">
                             <address id="address1">
-                                <?php echo $a_1; ?>:<br/>
-                                <?php echo $a_2; ?>,<br/>
-                                <?php echo $a_3; ?>,<br/>
-                                <?php echo $a_4; ?>.
+<?php echo $a_1; ?>:<br/>
+<?php echo $a_2; ?>,<br/>
+<?php echo $a_3; ?>,<br/>
+<?php echo $a_4; ?>.
                             </address>
                         </td>
                         <td style="width:100px;text-align: right;">
