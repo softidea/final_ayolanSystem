@@ -218,6 +218,17 @@ echo cel;
 ?>
         }
     </script>
+    <script>
+                                                            
+                                                            var cel;
+                                                            function readValues(x) {
+                                                                
+                                                                cel = x.cells[1].innerHTML;
+                                                               
+                                                                // alert(cus_id);
+                                                                window.location.href = "land_pawn_payment_set.php?ser_number=" + cel;
+                                                            }
+                                                        </script>     
     <?php
     $ser_no = "<script>document.write(cel)</script>";
     echo '<script>alert(' . "This Is var " . $ser_no . ');</script>';
