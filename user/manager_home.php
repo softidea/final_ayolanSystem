@@ -194,7 +194,7 @@ if (!isset($_SESSION['user_email'])) {
                                                 <img class="panelimage" style="width: 130px;margin-left: 60px;"src="../assets/images/home/reportt.png"/>
                                             </div>
                                             <div class="list-group">
-                                                <a href="#" style="text-decoration: none;"><button type="button" class="list-group-item">Ledger Card</button></a>
+                                                <a href="../customer/customer_ledger_front.php" style="text-decoration: none;"><button type="button" class="list-group-item">Ledger Card</button></a>
                                                 <a href="#" style="text-decoration: none;"><button type="button" class="list-group-item">Pawn Reports</button></a>
                                                 <a href="../customer/view_vehicles.php" style="text-decoration: none;"><button type="button" class="list-group-item">Vehicle Reports</button></a>
                                                 <a href="#" style="text-decoration: none;"><button type="button" class="list-group-item">Land Reports</button></a>

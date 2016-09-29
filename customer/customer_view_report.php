@@ -127,6 +127,9 @@ $date_setter = date("Y-m-d");
                                                     $sql_sum = "SELECT SUM(`customer_due`) AS sum FROM `ser_installment` WHERE `ser_number`='" . $row['ser_number'] . "'";
                                                     $result1 = mysqli_query($conn, $sql_sum);
                                                     $row1 = mysqli_fetch_assoc($result1);
+                                                    if ($row1['sum']!='0') {
+                                                        
+                                                    
                                                     ?>
                                                     <td><?php echo $row['cus_id'] ?></td>
                                                     <td><?php echo $row['cus_fullname'] ?></td>
@@ -136,7 +139,11 @@ $date_setter = date("Y-m-d");
                                                     <td><?php echo $row['cus_reg_date'] ?></td>
                                                     <td><?php echo $row['cus_tp'] ?></td>
                                                     <td><?php echo $row1['sum'] ?></td>
-
+                                                <?php
+                                                
+                                                }
+                                                
+                                                ?>
                                                 </tr>
                                                 <?php $i++; ?>
                                             <?php endwhile ?>
@@ -270,6 +277,9 @@ $date_setter = date("Y-m-d");
                                                     $sql_sum = "SELECT SUM(`customer_due`) AS sum FROM `ser_installment` WHERE `ser_number`='" . $row['ser_number'] . "'";
                                                     $result1 = mysqli_query($conn, $sql_sum);
                                                     $row1 = mysqli_fetch_assoc($result1);
+                                                   if ($row1['sum']!='0') {
+                                                        
+                                                    
                                                     ?>
                                                     <td><?php echo $row['cus_id'] ?></td>
                                                     <td><?php echo $row['cus_fullname'] ?></td>
@@ -279,7 +289,11 @@ $date_setter = date("Y-m-d");
                                                     <td><?php echo $row['cus_reg_date'] ?></td>
                                                     <td><?php echo $row['cus_tp'] ?></td>
                                                     <td><?php echo $row1['sum'] ?></td>
-
+                                                <?php
+                                                
+                                                }
+                                                
+                                                ?>
                                                 </tr>
                                                 <?php $i++; ?>
                                             <?php endwhile ?>
@@ -412,6 +426,9 @@ $date_setter = date("Y-m-d");
                                                     $sql_sum = "SELECT SUM(`customer_due`) AS sum FROM `ser_installment` WHERE `ser_number`='" . $row['ser_number'] . "'";
                                                     $result1 = mysqli_query($conn, $sql_sum);
                                                     $row1 = mysqli_fetch_assoc($result1);
+                                                    if ($row1['sum']!='0') {
+                                                        
+                                                    
                                                     ?>
                                                     <td><?php echo $row['cus_id'] ?></td>
                                                     <td><?php echo $row['cus_fullname'] ?></td>
@@ -421,7 +438,11 @@ $date_setter = date("Y-m-d");
                                                     <td><?php echo $row['cus_reg_date'] ?></td>
                                                     <td><?php echo $row['cus_tp'] ?></td>
                                                     <td><?php echo $row1['sum'] ?></td>
-
+                                                <?php
+                                                
+                                                }
+                                                
+                                                ?>
                                                 </tr>
                                                 <?php $i++; ?>
                                             <?php endwhile ?>
