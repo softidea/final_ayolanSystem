@@ -1,5 +1,4 @@
 <?php
-
 //$s=new NumberFormatter("en", NumberFormatter::SPELLOUT);
 //echo $s->format(1432);
 function convertNumberToWord($num = false) {
@@ -44,12 +43,3 @@ function convertNumberToWord($num = false) {
     }
     return implode(' ', $words);
 }
-
-
-
-
-
-
-
-
-echo convertNumberToWord(10050);
