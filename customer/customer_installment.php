@@ -2,7 +2,6 @@
 <?php
 date_default_timezone_set('Asia/Colombo');
 $current_date = date("Y-m-d");
-
 ?>
 <html>
     <head>
@@ -182,28 +181,28 @@ $current_date = date("Y-m-d");
                             document.getElementById('requiredpayment').value = res_arr[8];
                             document.getElementById('maximumpayment').value = res_arr[5];
                             document.getElementById('total_payable_installements').value = res_arr[6];
-                            
-                            
+
+
                         }
                     }
                 }
                 xmlhttp.open("GET", "../controller/co_load_installment_customer.php?sno_begin_ins=" + serviceno, true);
                 xmlhttp.send();
-                
+
             }
-             function saveInstallment(){
-                
+            function saveInstallment() {
+
                 var installment = document.getElementById('payble_installment').value;
                 var payment = document.getElementById('payment_submit').value;
                 var paybaledate = document.getElementById('payable_date').value;
                 var paiddate = document.getElementById('paid_date').value;
                 var remaining = document.getElementById('remain_amount').value;
                 var serno = document.getElementById('hidden_ser_number').value;
-                
+
                 var ser_number = document.getElementById('ser_number').value;
                 var cus_name = document.getElementById('cus_name').value;
-                
-                
+
+
                 remaining = parseFloat(remaining);
                 //alert(remaining);
                 if (remaining >= 0) {
@@ -221,10 +220,10 @@ $current_date = date("Y-m-d");
                                 loadServiceInstallments(serno);
                                 document.getElementById('payment_submit').value = "";
                                 document.getElementById('hidden_ser_number').value = "NONE";
-                                window.location="report_template_invoice.php";
+                                window.location = "report_template_invoice.php";
                             }
                         }
-                        xmlhttp.open("GET", "../controller/co_load_installment_customer.php?installment=" + installment + "&payment=" + payment + "&payabledate=" + paybaledate + "&paiddate=" + paiddate + "&serno=" + serno + "&saveinstallment=" + installment+ "&remainingbalance=" + remaining+"&ser_number="+ser_number+"&cus_name="+cus_name, true);
+                        xmlhttp.open("GET", "../controller/co_load_installment_customer.php?installment=" + installment + "&payment=" + payment + "&payabledate=" + paybaledate + "&paiddate=" + paiddate + "&serno=" + serno + "&saveinstallment=" + installment + "&remainingbalance=" + remaining + "&ser_number=" + ser_number + "&cus_name=" + cus_name, true);
                         xmlhttp.send();
                     } else {
                         alert("The Maximum Amount Allowed to pay is " + remaining);
@@ -233,13 +232,13 @@ $current_date = date("Y-m-d");
                     alert("The lease is already settled");
                 }
             }
-            
-            
+
+
 //            
         </script>
         <script type="text/javascript">
-            
-           
+
+
         </script>
         <script type="text/javascript">
             function loadInstallmentService() {
@@ -457,9 +456,9 @@ $current_date = date("Y-m-d");
                                                             <div class="form-group required">
                                                                 <div class="form-group required">
                                                                     <label class="control-label">Payable Date:</label>
-                                                                    <input type="text" readonly name="payable_date" id="payable_date" placeholder="Payable Date" class="form-control" required value="<?php echo $current_date;?>"/>
+                                                                    <input type="text" readonly name="payable_date" id="payable_date" placeholder="Payable Date" class="form-control" required value="<?php echo $current_date; ?>"/>
                                                                 </div>
-                                                                
+
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3">
@@ -468,7 +467,7 @@ $current_date = date("Y-m-d");
                                                                     <label class="control-label">Payment:</label>
                                                                     <input type="text" name="payment_submit" id="payment_submit" placeholder="Payment" class="form-control" required onKeyPress="return numbersonly(this, event);"/>
                                                                 </div>
-                                                              
+
                                                             </div>
                                                         </div>
 
@@ -478,10 +477,10 @@ $current_date = date("Y-m-d");
                                                                     <label class="control-label">Paid Date:</label>
                                                                     <input type="date" name="paid_date" id="paid_date" value="<?php echo $current_date; ?>" placeholder="Paid Date" class="form-control" required/>
                                                                 </div>
-<!--                                                                <div class="form-group required">
-                                                                    <label class="control-label">Remaining Lease:</label>
-                                                                    <input type="text" readonly name="remain_amount" id="remain_amount"  placeholder="Remaining Amount" class="form-control" required/>
-                                                                </div>-->
+                                                                <!--                                                                <div class="form-group required">
+                                                                                                                                    <label class="control-label">Remaining Lease:</label>
+                                                                                                                                    <input type="text" readonly name="remain_amount" id="remain_amount"  placeholder="Remaining Amount" class="form-control" required/>
+                                                                                                                                </div>-->
                                                             </div>
                                                         </div>
                                                     </div>
@@ -547,28 +546,28 @@ $current_date = date("Y-m-d");
     <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script type="text/javascript">
-        function numbersonly(myfield, e, dec)
-        {
-            var key;
-            var keychar;
-            if (window.event)
-                key = window.event.keyCode;
-            else if (e)
-                key = e.which;
-            else
-                return true;
-            keychar = String.fromCharCode(key);
-            if ((key == null) || (key == 0) || (key == 8) ||
-                    (key == 9) || (key == 13) || (key == 27))
-                return true;
-            else if ((("0123456789").indexOf(keychar) > -1))
-                return true;
-            else if (dec && (keychar == ".")) {
-                myfield.form.elements[dec].focus();
-                return false;
-            } else
-                return false;
-        }
+                                                    function numbersonly(myfield, e, dec)
+                                                    {
+                                                        var key;
+                                                        var keychar;
+                                                        if (window.event)
+                                                            key = window.event.keyCode;
+                                                        else if (e)
+                                                            key = e.which;
+                                                        else
+                                                            return true;
+                                                        keychar = String.fromCharCode(key);
+                                                        if ((key == null) || (key == 0) || (key == 8) ||
+                                                                (key == 9) || (key == 13) || (key == 27))
+                                                            return true;
+                                                        else if ((("0123456789").indexOf(keychar) > -1))
+                                                            return true;
+                                                        else if (dec && (keychar == ".")) {
+                                                            myfield.form.elements[dec].focus();
+                                                            return false;
+                                                        } else
+                                                            return false;
+                                                    }
 
     </script>
 </html>
