@@ -207,15 +207,16 @@ $st = "";
                                     <p id="facility"><?php echo $facility; ?></p>
 
                                     <label>Capital</label>
-                                    <p id="capital"><?php echo $capital; ?></p>
+                                    <p id="capital"><?php echo $capital; ?>.00</p>
 
                                     <label>No Of Rental</label> 
                                     <p id="ren_no"><?php echo $rental_no; ?></p>
 
                                     <label>Rental</label>
-                                    <p id="rental"><?php echo $rental; ?></p>
+                                    <p id="rental"><?php echo $rental; ?>.00</p>
 
-
+                                     <label>Next Instalment Date</label>
+                                    <p id="nedate"></p>
 
 
                                 </fieldset>
@@ -234,8 +235,7 @@ $st = "";
                                             <th>Payment</th>
                                             <th>Customer Due</th>
                                             <th>Company Due</th>
-                                            <th>Next Payment Date</th>
-                                            <th>Payable Payment</th>
+                                           <th>Next Payable Payment</th>
 
 
                                         </tr>
@@ -250,18 +250,31 @@ $st = "";
                                         <tbody id="tb">
 
                                             <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                                                <tr id="one">
+                                                <tr onload="check();" >
 
+                                            <?php if ((int)$row['company_due']<0) { 
+                                            ?>
+                                             <td><?php echo $row['paid_date'] ?></td>
+                                                <td>INV-<?php echo $row['int_id'] ?></td>
+                                                <td><?php echo $row['payment'] ?>.00</td>
+                                                <td><?php echo $row['customer_due'] ?>.00</td>
+                                                <td>0.00</td>
+                                                 <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due']+$rental ?>.00</td>
+                                            <?php }  else {?>   
+                                                 
+                                                   <td><?php echo $row['paid_date'] ?></td>
+                                                <td>INV-<?php echo $row['int_id'] ?></td>
+                                                <td><?php echo $row['payment'] ?>.00</td>
+                                                <td><?php echo $row['customer_due'] ?>.00</td>
+                                                <td><?php echo $row['company_due'];?>.00</td>
+                                                 <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due']+$rental ?>.00</td>
+                                                 
+                                                        <?php } ?>                 
+                                                                                
+                                                                          
+                                               
 
-                                                    <td><?php echo $row['paid_date'] ?></td>
-                                                    <td>INV-<?php echo $row['int_id'] ?></td>
-                                                    <td><?php echo $row['payment'] ?></td>
-                                                    <td><?php echo $row['customer_due'] ?></td>
-                                                    <td><?php echo $row['company_due'] ?></td>
-                                                    <td id="nedate"></td>
-                                                    <td><?php echo $row['payment'] - $row['company_due'] + $row['customer_due']+$rental ?></td>
-
-                                                </tr>
+                                            </tr>
 
                                             <?php endwhile ?>
                                         </tbody>
