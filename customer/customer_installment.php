@@ -221,6 +221,7 @@ $current_date = date("Y-m-d");
                                 loadServiceInstallments(serno);
                                 document.getElementById('payment_submit').value = "";
                                 document.getElementById('hidden_ser_number').value = "NONE";
+                                window.location="report_template_invoice.php";
                             }
                         }
                         xmlhttp.open("GET", "../controller/co_load_installment_customer.php?installment=" + installment + "&payment=" + payment + "&payabledate=" + paybaledate + "&paiddate=" + paiddate + "&serno=" + serno + "&saveinstallment=" + installment+ "&remainingbalance=" + remaining+"&ser_number="+ser_number+"&cus_name="+cus_name, true);
