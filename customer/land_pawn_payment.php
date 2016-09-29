@@ -109,17 +109,17 @@ $current_date = date("Y-m-d");
 //                        document.getElementById('pawn_period').value=xmlhttp.responseText;
 
                         var result_arr = xmlhttp.responseText.split("#");
-                        if(result_arr.length>1){
-                        document.getElementById('payable_date').value = result_arr[0];
-                        document.getElementById('payble_installment').value = result_arr[1] + ".00";
-                        document.getElementById('next_installment').value = result_arr[2] + ".00";
-                        document.getElementById('next_installment_date').value = result_arr[3];
-                        document.getElementById('total_payable_payment').value = result_arr[4];
-                        document.getElementById('remain_amount').value = result_arr[5] + ".00";
-                        document.getElementById('total_payable_installment').value = result_arr[6];
-                        document.getElementById('total_payabale').value = result_arr[7] + ".00";
-                        document.getElementById('requiredpayment').value = result_arr[7];
-                        }else{
+                        if (result_arr.length > 1) {
+                            document.getElementById('payable_date').value = result_arr[0];
+                            document.getElementById('payble_installment').value = result_arr[1] + ".00";
+                            document.getElementById('next_installment').value = result_arr[2] + ".00";
+                            document.getElementById('next_installment_date').value = result_arr[3];
+                            document.getElementById('total_payable_payment').value = result_arr[4];
+                            document.getElementById('remain_amount').value = result_arr[5];
+                            document.getElementById('total_payable_installment').value = result_arr[6];
+                            document.getElementById('total_payabale').value = result_arr[7];
+                            document.getElementById('requiredpayment').value = result_arr[7];
+                        } else {
                             alert("Deed Number Not Found.. Search Again");
                         }
 //                        
@@ -134,34 +134,35 @@ $current_date = date("Y-m-d");
             function savePawnInstallment() {
                 var deed_number = document.getElementById('hidden_deed_number').value;
                 var paid_date = document.getElementById('paid_date').value;
-                var payment = document.getElementById('payment_submit').value;
-                var remain = document.getElementById('remain_amount').value;
-                if(remain<=0){
+                var payment = parseFloat(document.getElementById('payment_submit').value);
+                var remain = parseFloat(document.getElementById('remain_amount').value);
+                
+                if (remain <= 0) {
                     alert("Cannot Complete...The Pawn is Already Settled");
-                }else if(payment>remain){
+                } else if (payment > remain) {
                     alert("Please Enter a Amount Equal or Lesser than the Remaining Amount");
-                }else{
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else { // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-                    {
-                        //alert(xmlhttp.responseText);
-                        checkInstallmentHave(deed_number);
-                        document.getElementById('hidden_deed_number').value="NONE";
-                       
-                        
+                } else {
+                    if (window.XMLHttpRequest) {
+                        // code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp = new XMLHttpRequest();
+                    } else { // code for IE6, IE5
+                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     }
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                        {
+                            //alert(xmlhttp.responseText);
+                            checkInstallmentHave(deed_number);
+                            document.getElementById('hidden_deed_number').value = "NONE";
+
+
+                        }
+                    }
+                    xmlhttp.open("GET", "../controller/land_pawn_search.php?save_installment_deed_no=" + deed_number + "&paid_date=" + paid_date + "&payment=" + payment, true);
+                    xmlhttp.send();
+
                 }
-                xmlhttp.open("GET", "../controller/land_pawn_search.php?save_installment_deed_no=" + deed_number + "&paid_date=" + paid_date + "&payment=" + payment, true);
-                xmlhttp.send();
-                
-                }
-                
+
             }
         </script>
         <script type="text/javascript">
@@ -181,11 +182,11 @@ $current_date = date("Y-m-d");
                     {
                         //alert(xmlhttp.responseText);
                         checkInstallmentHave(deed_number);
-                        document.getElementById('hidden_deed_number').value="NONE";
-                       
+                        document.getElementById('hidden_deed_number').value = "NONE";
+
                     }
                 }
-                xmlhttp.open("GET", "../controller/land_pawn_search.php?save_settlment_deed_no=" + deed_number + "&paid_date=" + paid_date + "&payment=" + payment+"&requiredpayment="+requiredpayment, true);
+                xmlhttp.open("GET", "../controller/land_pawn_search.php?save_settlment_deed_no=" + deed_number + "&paid_date=" + paid_date + "&payment=" + payment + "&requiredpayment=" + requiredpayment, true);
                 xmlhttp.send();
             }
         </script>
@@ -207,17 +208,12 @@ $current_date = date("Y-m-d");
                                     <legend>Customer Details</legend>
                                     <div class="form-group required">
                                         <label class="control-label">Customer NIC:</label>
-                                        <div class="form-inline required">
-                                            <input type="text"  name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" style="width:85%;text-transform: uppercase;" maxlength="10" required/>
-                                            <input type="button" class="btn btn" id="custcontinue" value="Search" onclick="">
-                                        </div>
+                                        <input type="text"  name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" maxlength="10" required readonly/>
                                     </div>
                                     <div class="form-group required">
-                                        <div class="form-inline required">
-                                            <label class="control-label">Customer Name:</label>
-                                            <input type="text"  name="cus_name" id="cus_name" placeholder="Customer Name" class="form-control" required style="width:85%;"/>
-                                            <input type="button" class="btn btn" id="custcontinue" value="Search" onclick="">
-                                        </div>
+                                        <label class="control-label">Customer Name:</label>
+                                        <input type="text"  name="cus_name" id="cus_name" placeholder="Customer Name" class="form-control" required readonly/>
+
                                     </div>
                                     <div class="form-group required">
                                         <div class="form-group required">
@@ -244,12 +240,6 @@ $current_date = date("Y-m-d");
                                     <fieldset id="account">
                                         <legend>Service Details</legend>
                                         <div class="form-group required">
-                                            <label class="control-label">Select Deed:</label>
-                                            <select name="deed_combo" id="deed_combo" class="form-control" onchange="">
-                                                <option value='0'>~~Select Service~~</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group required">
                                             <label class="control-label">Deed No:</label>
                                             <div class="form-inline required">
                                                 <input type="text"  name="deed_no" id="deed_no" placeholder="Deed No" class="form-control" style="width:85%;" required/>
@@ -260,7 +250,7 @@ $current_date = date("Y-m-d");
                                         <div class="form-group required">
                                             <label class="control-label">Pawn Period:</label>
                                             <div class="form-group required">
-                                                <input type="text" name="pawn_period" id="pawn_period" placeholder="Pawn Period" class="form-control" required/>
+                                                <input type="text" name="pawn_period" id="pawn_period" placeholder="Pawn Period" class="form-control" required readonly/>
                                             </div>
                                         </div>
                                         <div class="form-group required">

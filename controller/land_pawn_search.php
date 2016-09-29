@@ -5,7 +5,6 @@ if (!isset($_SESSION['user_email'])) {
     header("Location:../index.php");
 }
 
-
 require '../db/newDB.php';
 
 $deed_no = filter_input(INPUT_GET, 'deed_no');
@@ -17,8 +16,33 @@ $payment = filter_input(INPUT_GET, 'payment');
 $save_settlment_deed_no = filter_input(INPUT_GET, 'save_settlment_deed_no');
 $requiredpayment = filter_input(INPUT_GET, 'requiredpayment');
 
+$cus_nic = filter_input(INPUT_GET, 'cus_nic');
+
 date_default_timezone_set('Asia/Colombo');
 $current_date = date("Y-m-d");
+
+
+if($cus_nic!=null && $cus_nic!=""){
+    global $conn;
+    $load_customer="SELECT cus_nic FROM land_pawns WHERE cus_nic='$cus_nic'";
+    $load_query=  mysqli_query($conn, $load_customer);
+    if(mysqli_num_rows($load_customer)>0){
+        
+        $load_details = "SELECT * FROM customer WHERE cus_nic='$cus_nic'";
+        $run_details=  mysqli_query($conn, $load_details);
+        if(mysqli_num_rows($run_details)>0){
+            if($row_details=  mysqli_fetch_array($run_details)){
+                $cus_name=$row_details['cus_fullname'];
+                $cus_tp=$row_details['cus_tp'];
+                $cus_address=$row_details['cus_address'];
+                $cus_reg_date=$row_details['cus_reg_date'];
+                echo $cus_name."#".$cus_tp."#".$cus_address."#".$cus_reg_date;
+                
+            }
+        }
+    }
+    
+}
 
 if (isset($deed_no)) {
     $deed_query = "SELECT * FROM land_pawns WHERE deed_no='$deed_no'";
@@ -869,7 +893,7 @@ function PawnInstallment($sno_begin_ins){
                                 $payment_arr[sizeof($payment_arr)-1]=0;
                                 $is_arriers[sizeof($payment_arr)-1]=false;
                                 $payment_halfpaid[sizeof($payment_arr)-1]+=$thismonthdue;
-                                echo (sizeof($payment_arr)-1)."|";
+                               // echo (sizeof($payment_arr)-1)."|";
                                 $tenppay-=$thismonthdue;
                                 $thismonthdue=0;
                                 }else{
@@ -1018,7 +1042,7 @@ function PawnInstallment($sno_begin_ins){
            // print_r($payment_halfpaid);
            
             
-            $nextpayment = "NA";
+            $nextpayment = "";
             $nextpaydate = "NA";
             $totpaybleamnt = $customer_due;
             

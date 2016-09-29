@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_email'])) {
         <meta charset="utf-8">
         <title>User | Home</title>
         <?php include '../assets/include/head.php'; ?>
-        <link rel="stylesheet" href="../assets/css/home.css">
+        <link rel="stylesheet" href="../assets/css/manager_home.css">
     </head>
     <body>
         <nav id="top">
@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_email'])) {
         </nav>
 
         <div class="container">
-            <nav class="navbar navbar-default"  style="background: #009688;color: white;" >
+            <nav class="navbar navbar-default"  style="background: #1A237E;color: white;" >
                 <div class="navbar-header">
                     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
