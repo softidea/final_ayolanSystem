@@ -1,13 +1,19 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_email'])) {
-    header("Location:../index.php");
-} else {
+
+if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && ($_SESSION['user_typel'] === "Admin")) {
+
     $conn = mysqli_connect("77.104.142.97", "ayolanin_dev", "WelComeDB1129", "ayolanin_test");
     if (mysqli_connect_errno()) {
         echo "Falied to Connect the Database" . mysqli_connect_error();
     }
+    
+}else{
+    header("Location:../index.php");
+    
+    
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
