@@ -122,7 +122,7 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                                         <li class="dropdown-header" style="color: #004D40;">Lands</li>
                                         <li><a href="../customer/customer_addpawn.php" style="text-decoration: none;">New Pawn</a></li>
                                         <li><a href="#" style="text-decoration: none;">Update Land Pawn</a></li>
-                                        <li><a href="#" style="text-decoration: none;">View Land Pawns</a></li>
+                                        <li><a href="../customer/customer_serviceview_land.php" style="text-decoration: none;">View Land Pawns</a></li>
                                     </ul>
                                 </li>
                                 <li class="col-sm-3">
@@ -184,7 +184,7 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                             <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add Vehicle Lease</button></a>
                             <a href="../customer/customer_addpawn.php" style="text-decoration: none;"><button type="button" class="list-group-item">Add Land Pawn</button></a>
                             <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Vehicle Leases</button></a>
-                            <a href="../customer/customer_serviceview.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Land Pawns</button></a>
+                            <a href="../customer/customer_serviceview_land.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Land Pawns</button></a>
                             <a href="../customer/view_vehicles.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Vehicle Rates</button><a>
                                     <a href="../customer/view_vehicles.php" style="text-decoration: none;"><button type="button" class="list-group-item">View Land Rates</button></a>
                                     </div>
