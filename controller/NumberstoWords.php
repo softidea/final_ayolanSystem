@@ -44,4 +44,12 @@ function convertNumberToWord($num = false) {
     }
     return implode(' ', $words);
 }
-echo convertNumberToWord(1275);
+
+
+
+
+
+
+
+
+echo convertNumberToWord(10050);
