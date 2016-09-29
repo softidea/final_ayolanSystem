@@ -1,26 +1,23 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && ($_SESSION['user_typel'] === "Admin")) {
+if (!isset($_SESSION['user_email']) && !($_SESSION['user_status'] === "Active") && !($_SESSION['user_typel'] === "User")) {
+    header("Location:../index.php");
+} else {
+
 
     $conn = mysqli_connect("77.104.142.97", "ayolanin_dev", "WelComeDB1129", "ayolanin_test");
     if (mysqli_connect_errno()) {
         echo "Falied to Connect the Database" . mysqli_connect_error();
     }
-    
-}else{
-    header("Location:../index.php");
-    
-    
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <title>User | Home</title>
-        <?php include '../assets/include/head.php'; ?>
+<?php include '../assets/include/head.php'; ?>
         <link rel="stylesheet" href="../assets/css/home.css">
     </head>
     <body>
@@ -32,16 +29,15 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                             <a href="#">
                                 <i class="glyphicon glyphicon-eye-open"></i>
                             </a>
-                            <span class="hidden-xs hidden-sm hidden-md"><?php echo $_SESSION['user_username'];  ?></span>
+                            <span class="hidden-xs hidden-sm hidden-md"><?php echo $_SESSION['user_username']; ?></span>
                         </li>
 
-                        <?php
-                        
-                        $logged_user = $_SESSION['user_email'];
-                        $query = "SELECT * FROM userlogin WHERE user_type='3' AND user_email='$logged_user'";
-                        $run_query = mysqli_query($conn, $query);
-                        if (mysqli_num_rows($run_query) > 0) {
-                            ?>
+<?php
+$logged_user = $_SESSION['user_email'];
+$query = "SELECT * FROM userlogin WHERE user_type='3' AND user_email='$logged_user'";
+$run_query = mysqli_query($conn, $query);
+if (mysqli_num_rows($run_query) > 0) {
+    ?>
 
                             <li><a href="../admin/index.php"  title="User Management"><i class="glyphicon glyphicon-user"></i> <span class="hidden-xs hidden-sm hidden-md">Switch Admin</span></a></li>
                         <?php } ?>
@@ -235,7 +231,7 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                                     </div>
 
 
-                                    <?php include '../assets/include/footer.php'; ?>
+<?php include '../assets/include/footer.php'; ?>
                                     </body>
                                     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
                                     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
