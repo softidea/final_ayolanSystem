@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+session_start();
+if (!isset($_SESSION['user_email'])) {
+    header("Location:../index.php");
+}
+?>
 <html>
     <head>
         <title>Report | Invoice</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
 <?php
-
-session_start();
 
 $p_vehicle_number="None";
 $p_service_number="None";
@@ -20,8 +20,9 @@ $p_amount_word="None";
 $p_amount="0.00";
 $p_due_amount="0.00";
 
-$p_username=$_SESSION['user_username'];
-
+if (isset($_SESSION['user_username'])) {
+    $p_username=$_SESSION['user_username'];
+}
 ?>
 
 
@@ -171,6 +172,7 @@ $p_username=$_SESSION['user_username'];
                     
                 </div>
                 <br/>
+                <table>
                 <tr>
                     <td style="width:200px;">Vehicle No</td>
                     <td>:<?php echo "$p_vehicle_number"; ?></td>
@@ -215,6 +217,8 @@ $p_username=$_SESSION['user_username'];
                 </table>
 
             </div>
+            <br/>
+            <br/>
             <br/>
             <br/>
             <br/>

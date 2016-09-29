@@ -2,6 +2,10 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['user_email']) && !($_SESSION['user_status']==="Active")) {
+    header("Location:../index.php");
+}
+
     require_once '../../db/mysqliConnect.php';
     if (mysqli_connect_errno()) {
         echo "Falied to Connect the Database" . mysqli_connect_error();

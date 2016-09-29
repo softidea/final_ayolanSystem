@@ -2,9 +2,10 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_email'])) {
+if (!isset($_SESSION['user_email']) && !($_SESSION['user_status']==="Active")) {
     header("Location:../index.php");
 }
+
 require_once '../../db/newDB.php';
 
 ?>

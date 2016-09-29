@@ -1,8 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location:../../index.php");
+if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && ($_SESSION['user_typel'] === "Admin")) {
+}else{
+    header("Location:../index.php");
+    exit();
+    
 }
 ?>
 <!DOCTYPE html>

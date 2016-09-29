@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <?php
 session_start();
-if (!isset($_SESSION['user_email'])) {
-    header("Location:../index.php");
-} else {
 
+if (isset($_SESSION['user_email']) && ($_SESSION['user_status'] === "Active") && ($_SESSION['user_typel'] === "Admin")) {
     //Asia/Colombo
     date_default_timezone_set('Asia/Colombo');
     $sis_date = date("Y-m-d");
+} else {
+    header("Location:../index.php");
 }
-
 ?>
 <html>
     <head>
@@ -28,8 +27,8 @@ if (!isset($_SESSION['user_email'])) {
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,400italic,600,700,600italic,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-        <?php include '../../assets/include/navigation_bar_forAdmin.php';?>
-        
+<?php include '../../assets/include/navigation_bar_forAdmin.php'; ?>
+
         <style type="text/css">
             body
             {
@@ -78,7 +77,7 @@ if (!isset($_SESSION['user_email'])) {
             {
                 background-color: #004D40;
             }
-          
+
             #backregister
             {
                 background-color: #004D40;
@@ -187,166 +186,166 @@ if (!isset($_SESSION['user_email'])) {
         </script>
     </head>
     <body>
-        <?php include '../../assets/include/navigation_bar_forAdmin_step2.php'; ?>
+<?php include '../../assets/include/navigation_bar_forAdmin_step2.php'; ?>
 
         <!--Service View Main Panel-->
-         <form method="post" action="#">
-        <div class="container" style="margin-top: 80px;display: block;" id="one">
-            <div class="row">
-               
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" id="panelheading">
-                            <h3 class="panel-title">Add New Re-Process</h3>
-                        </div>
-                        <div class="panel-body" style="background-color: #FAFAFA;">
-                            <div class="col-sm-6">
-                                <fieldset id="account">
-                                    <legend>Customer Information</legend>
-                                    <div class="form-group required">
-                                        <div class="form-group required">
-                                            <label class="control-label">NIC:</label>
-                                            <input type="text" disabled name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" value="<?php echo '';?>" required/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <div class="form-group required">
-                                            <label class="control-label">Customer Name:</label>
-                                            <input type="text" disabled name="cus_name" id="cus_name" placeholder="Customer Name" class="form-control" required/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <div class="form-group required">
-                                            <label class="control-label">Address :</label>
-                                            <input type="text" disabled name="cus_address" id="cus_address" placeholder="Address" class="form-control" required/>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <div class="form-group required">
-                                            <label class="control-label">Registered Date :</label>
-                                            <input type="text" disabled name="reg_date" id="reg_date" placeholder="Address" class="form-control" required/>
-                                        </div>
-                                    </div>
-                                </fieldset>
+        <form method="post" action="#">
+            <div class="container" style="margin-top: 80px;display: block;" id="one">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="panelheading">
+                                <h3 class="panel-title">Add New Re-Process</h3>
                             </div>
-                            <div class="col-sm-6">
-                                <div id="searchOptionPanel">
+                            <div class="panel-body" style="background-color: #FAFAFA;">
+                                <div class="col-sm-6">
                                     <fieldset id="account">
-                                        <form method="post" action="#">
-                                        <legend>Service Information</legend>
+                                        <legend>Customer Information</legend>
                                         <div class="form-group required">
-                                            <label class="control-label">Service No:</label>
-                                            <div class="form-inline required">
-                                                <div class="form-inline required">
-                                                    <input type="text"  name="ser_no" id="ser_no" placeholder="Service No" class="form-control" style="width:85%;" maxlength="10" required/>
-                                                    <input type="button" class="btn btn" id="custcontinue" value="Search" onclick="searchServiceDetails();">
-                                                    <input type="hidden" id="hidden_ser_number">
+                                            <div class="form-group required">
+                                                <label class="control-label">NIC:</label>
+                                                <input type="text" disabled name="cus_nic" id="cus_nic" placeholder="NIC" class="form-control" value="<?php echo ''; ?>" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="form-group required">
+                                                <label class="control-label">Customer Name:</label>
+                                                <input type="text" disabled name="cus_name" id="cus_name" placeholder="Customer Name" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="form-group required">
+                                                <label class="control-label">Address :</label>
+                                                <input type="text" disabled name="cus_address" id="cus_address" placeholder="Address" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <div class="form-group required">
+                                                <label class="control-label">Registered Date :</label>
+                                                <input type="text" disabled name="reg_date" id="reg_date" placeholder="Address" class="form-control" required/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div id="searchOptionPanel">
+                                        <fieldset id="account">
+                                            <form method="post" action="#">
+                                                <legend>Service Information</legend>
+                                                <div class="form-group required">
+                                                    <label class="control-label">Service No:</label>
+                                                    <div class="form-inline required">
+                                                        <div class="form-inline required">
+                                                            <input type="text"  name="ser_no" id="ser_no" placeholder="Service No" class="form-control" style="width:85%;" maxlength="10" required/>
+                                                            <input type="button" class="btn btn" id="custcontinue" value="Search" onclick="searchServiceDetails();">
+                                                            <input type="hidden" id="hidden_ser_number">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                                <div class="form-group required">
+                                                    <div class="form-group required">
+                                                        <label class="control-label">Vehicle No:</label>
+                                                        <input type="text" disabled name="vehicle_no" id="vehicle_no"  placeholder="Vehicle No" class="form-control" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group required">
+                                                    <div class="form-group required">
+                                                        <label class="control-label">Service Date:</label>
+                                                        <input type="text" disabled name="ser_date" id="ser_date" value="" placeholder="Service Date" class="form-control" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group required">
+                                                    <div class="form-group required">
+                                                        <label class="control-label">Sis Date :</label>
+                                                        <input type="date" name="sis_date" id="sis_date"  min="1900-12-31" max="<?php echo $sis_date; ?>" value="<?php echo $sis_date; ?>" placeholder="Ex:2016-07-25" class="form-control" required/>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group required">
                                         <div class="form-group required">
-                                            <div class="form-group required">
-                                                <label class="control-label">Vehicle No:</label>
-                                                <input type="text" disabled name="vehicle_no" id="vehicle_no"  placeholder="Vehicle No" class="form-control" required/>
-                                            </div>
+                                            <label class="control-label">No of Installments :</label>
+                                            <input type="text" disabled name="no_of_installments" id="no_of_installments" placeholder="No of Installments" class="form-control" required/>
                                         </div>
+                                    </div>
+                                    <div class="form-group required">
                                         <div class="form-group required">
-                                            <div class="form-group required">
-                                                <label class="control-label">Service Date:</label>
-                                                <input type="text" disabled name="ser_date" id="ser_date" value="" placeholder="Service Date" class="form-control" required/>
-                                            </div>
+                                            <label class="control-label">Due Installments :</label>
+                                            <input type="text" disabled name="due_installments" id="due_installments" placeholder="Due Installments" class="form-control" required/>
+
                                         </div>
+                                    </div>
+                                    <div class="form-group required">
                                         <div class="form-group required">
-                                            <div class="form-group required">
-                                                <label class="control-label">Sis Date :</label>
-                                                <input type="date" name="sis_date" id="sis_date"  min="1900-12-31" max="<?php echo $sis_date; ?>" value="<?php echo $sis_date; ?>" placeholder="Ex:2016-07-25" class="form-control" required/>
-                                            </div>
+                                            <label class="control-label">Due Payment :</label>
+                                            <input type="text" disabled name="due_payment" id="due_payment" placeholder="Due Payment" class="form-control" required/>
                                         </div>
-                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Installment :</label>
+                                            <input type="text" disabled name="installment" id="installment" placeholder="Installment" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Paid Installment :</label>
+                                            <input type="text" disabled name="paid_installment" id="paid_installment" placeholder="Paid Installment" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Paid Payment :</label>
+                                            <input type="text" disabled name="paid_payment" id="paid_payment" placeholder="Paid Payment" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Value of Lease :</label>
+                                            <input type="text" disabled name="rental_cost" id="rental_cost" placeholder="Rental Cost" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Lease with Interest :</label>
+                                            <input type="text" disabled name="rent_cost_with_interest" id="rent_cost_with_interest" placeholder="Total Customer Due" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <div class="form-group required">
+                                            <label class="control-label">Sis Cost :</label>
+                                            <input type="text" name="sis_cost" id="sis_cost" placeholder="Sis Cost" class="form-control" required onKeyPress="return numbersonly(this, event);"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <fieldset>
+                                        <legend>Re-Process Description:</legend>
+                                        <textarea  style="height: 100px;width: 100%;" maxlength="250" name="re_process_des" id="re_process_des" placeholder="Enter Re-Process Description" required maxlength="500"></textarea>
+
+                                        <button type="submit"  class="btn btn" id="cservicebtn" onclick="saveSis();">Save Re-Process</button>
+
                                     </fieldset>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">No of Installments :</label>
-                                        <input type="text" disabled name="no_of_installments" id="no_of_installments" placeholder="No of Installments" class="form-control" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Due Installments :</label>
-                                        <input type="text" disabled name="due_installments" id="due_installments" placeholder="Due Installments" class="form-control" required/>
-
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Due Payment :</label>
-                                        <input type="text" disabled name="due_payment" id="due_payment" placeholder="Due Payment" class="form-control" required/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Installment :</label>
-                                        <input type="text" disabled name="installment" id="installment" placeholder="Installment" class="form-control" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Paid Installment :</label>
-                                        <input type="text" disabled name="paid_installment" id="paid_installment" placeholder="Paid Installment" class="form-control" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Paid Payment :</label>
-                                        <input type="text" disabled name="paid_payment" id="paid_payment" placeholder="Paid Payment" class="form-control" required/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Value of Lease :</label>
-                                        <input type="text" disabled name="rental_cost" id="rental_cost" placeholder="Rental Cost" class="form-control" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Lease with Interest :</label>
-                                        <input type="text" disabled name="rent_cost_with_interest" id="rent_cost_with_interest" placeholder="Total Customer Due" class="form-control" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="form-group required">
-                                        <label class="control-label">Sis Cost :</label>
-                                        <input type="text" name="sis_cost" id="sis_cost" placeholder="Sis Cost" class="form-control" required onKeyPress="return numbersonly(this, event);"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <fieldset>
-                                    <legend>Re-Process Description:</legend>
-                                    <textarea  style="height: 100px;width: 100%;" maxlength="250" name="re_process_des" id="re_process_des" placeholder="Enter Re-Process Description" required maxlength="500"></textarea>
-                                   
-                                    <button type="submit"  class="btn btn" id="cservicebtn" onclick="saveSis();">Save Re-Process</button>
-                                    
-                                </fieldset>
-                            </div>
                         </div>
                     </div>
+
                 </div>
-                
             </div>
-        </div>
-         </form>
+        </form>
         <!--Customer Service Loader-->
-       
-        
-        <?php include '../../assets/include/footer.php'; ?>
+
+
+<?php include '../../assets/include/footer.php'; ?>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

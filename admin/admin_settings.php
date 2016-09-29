@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+session_start();
+
+if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && ($_SESSION['user_typel'] === "Admin")) {
+}else{
+    header("Location:../index.php");
+    
+}
+?>
 <html>
     <head>
         <meta charset="UTF-8">

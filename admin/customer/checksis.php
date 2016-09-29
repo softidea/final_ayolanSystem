@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+if (isset($_SESSION['user_email']) && ($_SESSION['user_status'] === "Active") && ($_SESSION['user_typel'] === "Admin")) {
+    //Asia/Colombo
+    date_default_timezone_set('Asia/Colombo');
+    $sis_date = date("Y-m-d");
+} else {
+    header("Location:../index.php");
+}
+?>
 <html>
     <head>
         <meta charset="UTF-8">

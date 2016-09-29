@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_email'])) {
                         </li>
 
                         <?php
-                        global $conn;
+                        
                         $logged_user = $_SESSION['user_email'];
                         $query = "SELECT * FROM userlogin WHERE user_type='3' AND user_email='$logged_user'";
                         $run_query = mysqli_query($conn, $query);

@@ -30,7 +30,7 @@ if (!empty($username) && !empty($password)) {
             $_SESSION['user_username'] = $row['user_name'];
             $_SESSION['user_type'] = $row['user_type'];
             $_SESSION['user_branch'] = $row['branch'];
-            
+            $_SESSION['user_status']='Active';
             
             
             if ($row['user_type'] == 1) {
