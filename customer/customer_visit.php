@@ -81,6 +81,8 @@
                     var visit_cost = document.getElementById('visit_cost').value;
                     var visit_date = document.getElementById('visit_date').value;
                     var visit_des = document.getElementById('visit_des').value;
+                    var cus_name = document.getElementById('cus_name').value;
+                    var v_no = document.getElementById('vehicle_no').value;
 
                     if (service_no != null && service_no != "" && cus_nic != null && cus_nic != "" && visit_cost != null && visit_cost != "" && visit_date != null && visit_date != "" && visit_des != null && visit_des != "") {
                         if (window.XMLHttpRequest) {
@@ -104,7 +106,7 @@
 
                             }
                         }
-                        xmlhttp.open("GET", "../controller/co_load_visit_customer.php?visit_service_no=" + service_no + "&visit_cus_nic=" + cus_nic + "&visit_cost=" + visit_cost + "&visit_date=" + visit_date + "&visit_des=" + visit_des, true);
+                        xmlhttp.open("GET", "../controller/co_load_visit_customer.php?visit_service_no=" + service_no + "&visit_cus_nic=" + cus_nic + "&visit_cost=" + visit_cost + "&visit_date=" + visit_date + "&visit_des=" + visit_des+ "&cus_name=" + cus_name+ "&vno=" + v_no, true);
                         xmlhttp.send();
 
                     } else {
@@ -206,7 +208,7 @@
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label">Customer Name:</label>
-                                                <input type="text" readonly name="cus_name" id="cus_name" placeholder="Customer NIC" class="form-control" />
+                                                <input type="text" readonly name="cus_name" id="cus_name" placeholder="Customer Name" class="form-control" />
                                             </div>
                                             <div class="form-group required">
                                                 <label class="control-label">Visit Cost:</label>

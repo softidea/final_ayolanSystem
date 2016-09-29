@@ -14,6 +14,8 @@ $visit_cus_nic= filter_input(INPUT_GET, 'visit_cus_nic');
 $visit_cost= filter_input(INPUT_GET, 'visit_cost');
 $visit_date= filter_input(INPUT_GET, 'visit_date');
 $visit_des= filter_input(INPUT_GET, 'visit_des');
+$cus_name= filter_input(INPUT_GET, 'cus_name');
+$vno= filter_input(INPUT_GET, 'vno');
 
 //load service and customer details
 if($service_no!=null && $service_no!=""){
@@ -41,9 +43,10 @@ if($visit_service_no!=null && $visit_service_no!="" && $visit_cus_nic!=null && $
     $_SESSION['visit_cus_nic']=$visit_cus_nic;
     $_SESSION['visit_cost']=$visit_cost;
     $_SESSION['visit_des']=$visit_des;
-    $_SESSION['Vehicle_no']=$vehicle_no;
+    $_SESSION['Vehicle_no']=$vno;
     $_SESSION['customer_name']=$cus_name;
     $_SESSION['customer_nic']=$cus_nic;
+    
     
     global $conn;
     $save_vehicle_visit="INSERT INTO `ayolanin_test`.`service_visit`

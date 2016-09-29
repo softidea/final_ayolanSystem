@@ -24,8 +24,8 @@ require_once '../db/newDB.php';
 
         $p_vehicle_number =  $_SESSION['Vehicle_no'];
         $p_service_number = $_SESSION['visit_service_no'];
-        $p_cus_name =  $_SESSION['customer_name'];
-        $p_cus_nic = $_SESSION['customer_nic'];
+        $p_cus_name =   $_SESSION['customer_name'];
+        $p_cus_nic = $_SESSION['visit_cus_nic'];
         $p_visit_cost =$_SESSION['visit_cost'];
         $p_amount = $_SESSION['visit_cost'];
         $p_due_amount = "0.00";
@@ -277,9 +277,9 @@ require_once '../db/newDB.php';
             <br/>
 
             <hr/>
-           <div style="width: 100%;">
-                <p>Customer Signature:..................................<span><br/></span> Officer Signature:..................................(<?php echo "$p_username"; ?>)</p>
-            </div>
+            <table style="width: 100%;">
+                <td>Customer Signature:..................................<td><td> Officer Signature:..................................(<?php echo "$p_username"; ?>)</td>
+            </table>
             <hr/>
 
             <footer style="font-family: sans-serif,Tahoma, Verdana, Segoe">   
