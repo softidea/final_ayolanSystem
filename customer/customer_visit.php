@@ -100,6 +100,7 @@
                                 document.getElementById('visit_cost').value = "";
                                 document.getElementById('visit_date').value = "";
                                 document.getElementById('visit_des').value = "";
+                                window.location = "report_template_visiting.php";
 
                             }
                         }
@@ -310,37 +311,37 @@
                                     </div>
                                     <div class="col-sm-6" id="update_visit_panel">
                                         <fieldset id="account">
-                                             <form method="post" action="#">
-                                            <legend>Update Visit</legend>
-                                            <div class="form-group required">
-                                                <label class="control-label">Visit Id:</label>
-                                                <div class="form-inline required">
-                                                    <input type="text"  name="visit_id_serch" id="visit_id_serch" class="form-control" style="width:85%;text-transform: uppercase;" placeholder="Visit Id" maxlength="10" required onKeyPress="return numbersonly(this, event);"/>
-                                                    <button type="button" class="btn btn" id="custcontinue" value="Search" onclick="check()">Search</button>
+                                            <form method="post" action="#">
+                                                <legend>Update Visit</legend>
+                                                <div class="form-group required">
+                                                    <label class="control-label">Visit Id:</label>
+                                                    <div class="form-inline required">
+                                                        <input type="text"  name="visit_id_serch" id="visit_id_serch" class="form-control" style="width:85%;text-transform: uppercase;" placeholder="Visit Id" maxlength="10" required onKeyPress="return numbersonly(this, event);"/>
+                                                        <button type="button" class="btn btn" id="custcontinue" value="Search" onclick="check()">Search</button>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="control-label">Visit Date:</label>
-                                                <input type="date" name="visit_date_serch" id="visit_date_serch" class="form-control" value="<?php echo date("Y-m-d"); ?>"/>
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="control-label">Visit Cost:</label>
-                                                <input type="text" name="visit_cost_serch" id="visit_cost_serch" placeholder="00.00"  class="form-control" />
-                                            </div>
-                                            <div class="form-group required">
-                                                <label class="control-label">Visit Status:</label>
-                                                <div class="form-inline required">
-                                                   
+                                                <div class="form-group required">
+                                                    <label class="control-label">Visit Date:</label>
+                                                    <input type="date" name="visit_date_serch" id="visit_date_serch" class="form-control" value="<?php echo date("Y-m-d"); ?>"/>
+                                                </div>
+                                                <div class="form-group required">
+                                                    <label class="control-label">Visit Cost:</label>
+                                                    <input type="text" name="visit_cost_serch" id="visit_cost_serch" placeholder="00.00"  class="form-control" />
+                                                </div>
+                                                <div class="form-group required">
+                                                    <label class="control-label">Visit Status:</label>
+                                                    <div class="form-inline required">
+
                                                         <select name="search_category_serch" id="search_category_serch" class="form-control" style="width:80%;">
                                                             <option value="Active">Active</option>
                                                             <option value="Deactive">Deactive</option>
                                                         </select>
-                                                    <button type="submit" class="btn btn" name="Update_Visit" id="custcontinue" value="Update Visit">Update Visit</button>
-                                                 
-                                                </div>
+                                                        <button type="submit" class="btn btn" name="Update_Visit" id="custcontinue" value="Update Visit">Update Visit</button>
 
-                                            </div>
-                                               </form>
+                                                    </div>
+
+                                                </div>
+                                            </form>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -353,40 +354,38 @@
             include '../assets/include/footer.php';
 
             if (isset($_POST['Update_Visit'])) {
-                
-             
-                
-                $quary_update_visit =" UPDATE
+
+
+
+                $quary_update_visit = " UPDATE
                 `service_visit`
                 SET
                
-                `visit_date` = '".$_POST['visit_date_serch']."',
-                `visit_cost` = '".$_POST['visit_cost_serch']."',
-                `visit_status` = '".$_POST['search_category_serch']."'
-                WHERE `visit_id` = '".$_POST['visit_id_serch']."'";
-                
-                  $result_update_visit = mysqli_query($conn, $quary_update_visit);
-                  
-                  if ( $result_update_visit) {
+                `visit_date` = '" . $_POST['visit_date_serch'] . "',
+                `visit_cost` = '" . $_POST['visit_cost_serch'] . "',
+                `visit_status` = '" . $_POST['search_category_serch'] . "'
+                WHERE `visit_id` = '" . $_POST['visit_id_serch'] . "'";
 
-                echo '<script>alert("Successfully Updated");</script>';
-                
-            } else {
-                echo '<script>alert("Updated Failed")</script>';
-                // echo '<script>alert("'.  mysqli_error().'")</script>';
+                $result_update_visit = mysqli_query($conn, $quary_update_visit);
 
-                die(mysql_error());
-            }
-               
+                if ($result_update_visit) {
+
+                    echo '<script>alert("Successfully Updated");</script>';
+                } else {
+                    echo '<script>alert("Updated Failed")</script>';
+                    // echo '<script>alert("'.  mysqli_error().'")</script>';
+
+                    die(mysql_error());
+                }
             }
             ?>
-          
+
         </body>
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <script src="http://bootsnipp.com/dist/scripts.min.js"></script>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <?php
-    }
-    ?>
+    <?php
+}
+?>
 </html>

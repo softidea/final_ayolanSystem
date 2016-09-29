@@ -41,6 +41,9 @@ if($visit_service_no!=null && $visit_service_no!="" && $visit_cus_nic!=null && $
     $_SESSION['visit_cus_nic']=$visit_cus_nic;
     $_SESSION['visit_cost']=$visit_cost;
     $_SESSION['visit_des']=$visit_des;
+    $_SESSION['Vehicle_no']=$vehicle_no;
+    $_SESSION['customer_name']=$cus_name;
+    $_SESSION['customer_nic']=$cus_nic;
     
     global $conn;
     $save_vehicle_visit="INSERT INTO `ayolanin_test`.`service_visit`

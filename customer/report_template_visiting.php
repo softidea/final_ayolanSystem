@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_email'])) {
     header("Location:../index.php");
 }
 
-require_once '../db/mysqliConnect.php';
+require_once '../db/newDB.php';
 ?>
 <html>
     <head>
@@ -22,12 +22,12 @@ require_once '../db/mysqliConnect.php';
 
 
 
-        $p_vehicle_number = "None";
-        $p_service_number = "None";
-        $p_cus_name = "None";
-        $p_cus_nic = "None";
-        $p_visit_cost = "0.00";
-        $p_amount = "0.00";
+        $p_vehicle_number =  $_SESSION['Vehicle_no'];
+        $p_service_number = $_SESSION['visit_service_no'];
+        $p_cus_name =  $_SESSION['customer_name'];
+        $p_cus_nic = $_SESSION['customer_nic'];
+        $p_visit_cost =$_SESSION['visit_cost'];
+        $p_amount = $_SESSION['visit_cost'];
         $p_due_amount = "0.00";
         $p_due_balance = "0.00";
         $p_amount_word = "None";
@@ -85,7 +85,7 @@ require_once '../db/mysqliConnect.php';
 
         $qy_invoiceAdd = "INSERT INTO invoice (inv_number,inv_issue_user,inv_ser_number,inv_due_amount,inv_paid_amount,inv_date_time) VALUES('$p_NinvNumber','" . $user_name . "','$p_due_amount','$p_amount','$paid_date')";
 
-        mysqli_query($d_bc, $qy_invoiceAdd);
+        mysqli_query($conn, $qy_invoiceAdd);
         ?>
 
 
@@ -277,7 +277,7 @@ require_once '../db/mysqliConnect.php';
             <br/>
 
             <hr/>
-            <div style="width: 100%;">
+           <div style="width: 100%;">
                 <p>Customer Signature:..................................<span><br/></span> Officer Signature:..................................(<?php echo "$p_username"; ?>)</p>
             </div>
             <hr/>
