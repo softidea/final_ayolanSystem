@@ -854,7 +854,7 @@ if (!isset($_SESSION['user_email'])) {
   `customer` 
 SET
 
-  `cus_fullname` = '" . $_POST['cus_name'] . "',
+ 
   `cus_address` = '" . $_POST['cus_address'] . "',
   `cus_tp` = '" . $_POST['cus_tp'] . "',
   `cus_dob` = '" . $_POST['cus_dob'] . "',
@@ -890,7 +890,7 @@ WHERE `cus_nic` = '" . $_POST['search_cus_nic'] . "'
  `guarantor` 
 SET
 
-  `ger_fullname` = '" . $_POST['g1_name'] . "',
+ 
   `ger_address` = '" . $_POST['g1_address'] . "',
   `ger_tp` = '" . $_POST['g1_tp'] . "',
   `ger_nic` = '" . $_POST['g1_nic'] . "',
@@ -913,7 +913,7 @@ WHERE `ger_id` = '" . $_POST['g1_id'] . "'
   `guarantor` 
 SET
 
-  `ger_fullname` = '" . $_POST['g2_name'] . "',
+ 
   `ger_address` = '" . $_POST['g2_address'] . "',
   `ger_tp` = '" . $_POST['g2_tp'] . "',
   `ger_nic` = '" . $_POST['g2_nic'] . "',
