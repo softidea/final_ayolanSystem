@@ -182,6 +182,8 @@ $current_date = date("Y-m-d");
                             document.getElementById('requiredpayment').value = res_arr[8];
                             document.getElementById('maximumpayment').value = res_arr[5];
                             document.getElementById('total_payable_installements').value = res_arr[6];
+                            
+                            
                         }
                     }
                 }
@@ -197,6 +199,11 @@ $current_date = date("Y-m-d");
                 var paiddate = document.getElementById('paid_date').value;
                 var remaining = document.getElementById('remain_amount').value;
                 var serno = document.getElementById('hidden_ser_number').value;
+                
+                var ser_number = document.getElementById('ser_number').value;
+                var cus_name = document.getElementById('cus_name').value;
+                
+                
                 remaining = parseFloat(remaining);
                 //alert(remaining);
                 if (remaining >= 0) {
@@ -216,7 +223,7 @@ $current_date = date("Y-m-d");
                                 document.getElementById('hidden_ser_number').value = "NONE";
                             }
                         }
-                        xmlhttp.open("GET", "../controller/co_load_installment_customer.php?installment=" + installment + "&payment=" + payment + "&payabledate=" + paybaledate + "&paiddate=" + paiddate + "&serno=" + serno + "&saveinstallment=" + installment+ "&remainingbalance=" + remaining, true);
+                        xmlhttp.open("GET", "../controller/co_load_installment_customer.php?installment=" + installment + "&payment=" + payment + "&payabledate=" + paybaledate + "&paiddate=" + paiddate + "&serno=" + serno + "&saveinstallment=" + installment+ "&remainingbalance=" + remaining+"&ser_number="+ser_number+"&cus_name="+cus_name, true);
                         xmlhttp.send();
                     } else {
                         alert("The Maximum Amount Allowed to pay is " + remaining);
