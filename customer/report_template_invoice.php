@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_email'])) {
 ?>
 <html>
     <head>
-        <title>Report | Invoice</title>
+        <title>Report | Visit</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -16,16 +16,36 @@ if (!isset($_SESSION['user_email'])) {
 $p_vehicle_number="None";
 $p_service_number="None";
 $p_cus_name="None";
-$p_amount_word="None";
+$p_cus_nic="None";
+$p_visit_cost="0.00";
 $p_amount="0.00";
 $p_due_amount="0.00";
+$p_amount_word="None";
 
 if (isset($_SESSION['user_username'])) {
     $p_username=$_SESSION['user_username'];
 }
+
+if ($_SESSION['user_branch']=="Horana") {
+    $a_1="Head Office";
+    $a_2="No: 141";
+    $a_3="Rathnapura Rd";
+    $a_4="Horana";
+    
+    
+}else if($_SESSION['user_branch']=="Bulathsinghala"){
+    $a_1="Branch";
+    $a_2="No: 18";
+    $a_3="Hoarana Rd";
+    $a_4="Bulathsinhale";
+    
+}
+
 ?>
 
 
+        
+        
     </head>
     <body>
         <style>
@@ -135,17 +155,17 @@ if (isset($_SESSION['user_username'])) {
                 <img src="http://ayolaninvestments.com/system/assets/images/admin/ayolan_logo.png" alt="img" style="width: 100px;height: 100px;"/>
 
 
-                <h1 style="font-family: sans-serif,Tahoma, Verdana, Segoe">CUSTOMER INVOICE | AYOLAN INVESTMENTS </h1>
+                <h1 style="font-family: sans-serif,Tahoma, Verdana, Segoe">VISIT INVOICE | AYOLAN INVESTMENTS </h1>
                 <hr/>
                 
                 <table style="width: 300px;float:right;font-family: sans-serif,Tahoma, Verdana, Segoe;">
                     <tr>
                         <td style="width:50px;text-align: right;">
                             <address id="address1">
-                                Head Office<br/>
-                                No: 141,<br/>
-                                Rathnapura Rd,<br/>
-                                Horana.
+                                <?php echo $a_1; ?>:<br/>
+                                <?php echo $a_2; ?>,<br/>
+                                <?php echo $a_3; ?>,<br/>
+                                <?php echo $a_4; ?>.
                             </address>
                         </td>
                         <td style="width:100px;text-align: right;">
@@ -161,15 +181,10 @@ if (isset($_SESSION['user_username'])) {
                 </table>
             </header>
             <hr style="padding-top: 0px;margin: 0px;"/>
-            <article>
+            
                 <div style="float: right;">
                     
-                     <table>
-                    <tr>
-                        <td>Date :<?php echo date("d-m-Y"); ?></td>
-                    </tr>
-                </table>
-                    
+                     Date :<?php echo date("d-m-Y"); ?>
                 </div>
                 <br/>
                 <table>
@@ -177,9 +192,8 @@ if (isset($_SESSION['user_username'])) {
                     <td style="width:200px;">Vehicle No</td>
                     <td>:<?php echo "$p_vehicle_number"; ?></td>
                 </tr>
-
                 <tr>
-                    <td style="width:200px;">Aargument No</td>
+                    <td style="width:200px;">Argument No</td>
                     <td>:<?php echo "$p_service_number"; ?></td>
                 </tr>
 
@@ -193,34 +207,28 @@ if (isset($_SESSION['user_username'])) {
                     <td>:<?php echo "$p_amount_word"; ?></td>
                 </tr>
             </table>
+           
 
-
-
-
-            <div style="float: right;height: 50px;">
-
-                <table style="background: #4CAF50">
+                <table style="float: right;height: 40px;">
                     <tr>
                         <td style="width:200px;"><strong>Amount</strong></td>
                         <td>:<strong><?php echo "$p_amount"; ?></strong></td>
                     </tr>
-                    <hr/>
+                    
                     <tr>
                         <td style="width:200px;"><strong>Due Amount</strong></td>
                         <td>:<strong><?php echo "$p_due_amount"; ?></strong></td>
                     </tr>
-                    <hr/>
+                    
                     <tr>
                         <td style="width:200px;"><strong>Due Amount</strong></td>
                         <td><strong>105000.00</strong></td>
                     </tr>
                 </table>
 
-            </div>
             <br/>
             <br/>
-            <br/>
-            <br/>
+           
             <br/>
 
             <hr/>
