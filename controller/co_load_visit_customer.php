@@ -36,6 +36,12 @@ if($service_no!=null && $service_no!=""){
 //save customer service visit
 if($visit_service_no!=null && $visit_service_no!="" && $visit_cus_nic!=null && $visit_cus_nic!="" && $visit_cost!=null && $visit_cost!="" && $visit_date!=null && $visit_date!="" && $visit_des!=null && $visit_des!=""){
 
+    $_SESSION['visit_date']=$visit_date;
+    $_SESSION['visit_service_no']=$visit_service_no;
+    $_SESSION['visit_cus_nic']=$visit_cus_nic;
+    $_SESSION['visit_cost']=$visit_cost;
+    $_SESSION['visit_des']=$visit_des;
+    
     global $conn;
     $save_vehicle_visit="INSERT INTO `ayolanin_test`.`service_visit`
             (

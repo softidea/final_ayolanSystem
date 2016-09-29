@@ -14,6 +14,14 @@ require_once '../db/mysqliConnect.php';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <?php
+        $visit_date=$_SESSION['visit_date'];
+        $visit_service_no=$_SESSION['visit_service_no'];
+        $visit_cus_nic=$_SESSION['visit_cus_nic'];
+        $visit_cost=$_SESSION['visit_cost'];
+        $visit_des=$_SESSION['visit_des'];
+
+
+
         $p_vehicle_number = "None";
         $p_service_number = "None";
         $p_cus_name = "None";
