@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_email'])) {
     header("Location:../index.php");
 }
 
-require_once '../db/mysqliConnect.php';
+require '../db/newDB.php';
 ?>
 <html>
     <head>
@@ -41,7 +41,7 @@ require_once '../db/mysqliConnect.php';
         }
 
         $p_invNumber = "";
-
+        global $conn;
         $qy_getInvoiceNumber = "SELECT inv_aid FROM invoice ORDER BY inv_aid DESC LIMIT 1";
         $result = mysqli_query($conn, $qy_getInvoiceNumber);
         if (mysqli_num_rows($result) > 0) {
@@ -77,7 +77,7 @@ require_once '../db/mysqliConnect.php';
 
         $qy_invoiceAdd = "INSERT INTO invoice (inv_number,inv_issue_user,inv_ser_number,inv_due_amount,inv_paid_amount,inv_date_time) VALUES('$p_NinvNumber','" . $user_name . "','$p_due_amount','$p_amount','$paid_date')";
 
-        mysqli_query($d_bc, $qy_invoiceAdd);
+        mysqli_query($conn, $qy_invoiceAdd);
         ?>
 
 
