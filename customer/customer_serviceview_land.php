@@ -111,11 +111,11 @@
 
                                         if (isset($_POST['search'])) {
 
-                                             $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` WHERE `deed_no`='" . $_POST['customer_search_bar'] . "'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                             $sql_query = "SELECT SQL_CALC_FOUND_ROWS `pawn_id`,`deed_no`,`cus_nic`,`deed_reg_date`,`description`,`pawn_rental`,`period`,`area`,`pawn_status` FROM`land_pawns` WHERE `deed_no`='" . $_POST['customer_search_bar'] . "'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
                                             
                                         } elseif (isset($_POST['searchByDate'])) {
 
-                                            $sql_query = "SELECT SQL_CALC_FOUND_ROWS `ser_number`,`ser_date`,`description`,`fix_rate`,`period`,`installment`,`ser_status` FROM `service` WHERE `deed_reg_date`='" . $_POST['install_date'] . "'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            $sql_query = "SELECT SQL_CALC_FOUND_ROWS `pawn_id`,`deed_no`,`cus_nic`,`deed_reg_date`,`description`,`pawn_rental`,`period`,`area`,`pawn_status` FROM`land_pawns` WHERE `deed_reg_date`='" . $_POST['install_date'] . "'  LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
                                         } elseif (isset($_POST['search_view_all'])) {
 
                                            $sql_query = "SELECT SQL_CALC_FOUND_ROWS `pawn_id`,`deed_no`,`cus_nic`,`deed_reg_date`,`description`,`pawn_rental`,`period`,`area`,`pawn_status` FROM`land_pawns` LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
@@ -157,7 +157,7 @@
                                                     <?php while ($row = mysqli_fetch_assoc($result)): ?>
 
                                                         <?php
-                                                        if ($row['ser_status'] == "1") {
+                                                        if ($row['pawn_status'] == "1") {
                                                             $status = "Active";
                                                         } else {
                                                             $status = "Deactive";
@@ -166,13 +166,15 @@
 
                                                         <tr<?php echo $index++ % 2 ? ' class="even"' : '' ?> onclick="readValues(this);">
 
-                                                            <td><input type="radio" name="check"/></td>
-                                                            <td><?php echo $row['ser_number'] ?></td>
-                                                            <td><?php echo $row['ser_date'] ?></td>
+                                                            
+                                                            <td><?php echo $row['pawn_id'] ?></td>
+                                                            <td><?php echo $row['deed_no'] ?></td>
+                                                            <td><?php echo $row['cus_nic'] ?></td>
+                                                            <td><?php echo $row['deed_reg_date'] ?></td>
                                                             <td><?php echo $row['description'] ?></td>
-                                                            <td><?php echo $row['fix_rate'] ?></td>
+                                                            <td><?php echo $row['pawn_rental'] ?></td>
                                                             <td><?php echo $row['period'] ?></td>
-                                                            <td><?php echo $row['installment'] ?></td>
+                                                            <td><?php echo $row['area'] ?></td>
                                                             <td><?php echo $status ?></td>
 
                                                         </tr>
