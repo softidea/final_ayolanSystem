@@ -91,10 +91,17 @@ require '../db/newDB.php';
         ?>
 
 
+        <script>
+            function printFunction() {
+                window.print();
 
+            }
+        </script>
 
     </head>
-    <body>
+    <body onload="printFunction()">
+
+
         <style>
             div.container {
                 width: 100%;
@@ -199,10 +206,10 @@ require '../db/newDB.php';
         <div class="container">
 
             <header>
-                <img src="http://ayolaninvestments.com/system/assets/images/admin/ayolan_logo.png" alt="img" style="width: 100px;height: 100px;"/>
+                <a href="../user/user_home.php"><img src="http://ayolaninvestments.com/system/assets/images/admin/ayolan_logo.png" alt="img" style="width: 100px;height: 100px;"/></a>
 
 
-                <h1 style="font-family: sans-serif,Tahoma, Verdana, Segoe">VISIT INVOICE | AYOLAN INVESTMENTS </h1>
+                <h1 style="font-family: sans-serif,Tahoma, Verdana, Segoe">CUSTOMER INVOICE | AYOLAN INVESTMENTS </h1>
                 <hr/>
 
                 <table style="width: 300px;float:right;font-family: sans-serif,Tahoma, Verdana, Segoe;">
@@ -279,9 +286,9 @@ require '../db/newDB.php';
             <br/>
 
             <hr/>
-            <div style="width: 100%;">
-                <p>Customer Signature:..................................<span><br/></span> Officer Signature:..................................(<?php echo "$p_username"; ?>)</p>
-            </div>
+            <table style="width: 100%;">
+                <td>Customer Signature:..................................<td><td> Officer Signature:..................................(<?php echo "$p_username"; ?>)</td>
+            </table>
             <hr/>
 
             <footer style="font-family: sans-serif,Tahoma, Verdana, Segoe">   
@@ -293,3 +300,11 @@ require '../db/newDB.php';
 
     </body>
 </html>
+<?php
+unset($_SESSION['ser_no']);
+unset($_SESSION['p_service_number']);
+unset($_SESSION['p_cus_name']);
+unset($_SESSION['p_amount']);
+unset($_SESSION['p_due_amount']);
+unset($_SESSION['p_amount_word']);
+?>
