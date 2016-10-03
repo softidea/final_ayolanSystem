@@ -73,7 +73,7 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                     <div class="col-lg-3">
                         <div class="panel panel-default">
                             <div class="panel-heading" id="panelheading">
-                                <h3 class="panel-title">Privilege Management</h3>
+                                <h3 class="panel-title">Privilege Management(Pending)</h3>
                             </div>
                             <div class="panel-body">
                                 <img class="panelimage" src="../assets/images/admin/privillege.png"/>

@@ -49,7 +49,7 @@ $cus_name = filter_input(INPUT_GET, 'cus_name');
 
 if ($ser_number != "" && $ser_number != null) {
     global $conn;
-    $query = "SELECT * FROM service WHERE ser_number='$ser_number'";
+    $query = "SELECT * FROM service WHERE ser_number='$ser_number' AND ser_status='2'";
     $run_query = mysqli_query($conn, $query);
     if (mysqli_num_rows($run_query) > 0) {
         if ($row = mysqli_fetch_assoc($run_query)) {
