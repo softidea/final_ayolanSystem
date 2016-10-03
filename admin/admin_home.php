@@ -121,12 +121,12 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                                 <img class="panelimage" src="../assets/images/admin/re-process.png"/>
                             </div>
                             <div class="list-group">
-                                <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">New Re-Process Registration</button></a>
-                                <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">View Re-Processes</button></a>
-                                <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Release Re-Processes</button></a>
-                                <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Check Available Re-Processes</button></a>
-                                <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Settlement Reports</button></a>
-                                <a href="../customer/customer_registration.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Re-Process Reports</button></a>
+                                <a href="customer/addsis.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">New Re-Process Registration</button></a>
+                                <a href="customer/viewsis.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">View Re-Processes</button></a>
+                                <a href="customer/checksis.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Release Re-Processes</button></a>
+                                <a href="customer/viewsis.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Check Available Re-Processes</button></a>
+                                <a href="#" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Settlement Reports</button></a>
+                                <a href="customer/viewsis.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Re-Process Reports</button></a>
                             </div>
                             <div class="panel-footer">
                                 <div style="height: 15px;clear: both;"></div>
