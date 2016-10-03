@@ -1371,6 +1371,7 @@ $date_setter = date("Y-m-d");
                                 <ul class="nav nav-tabs">
                                    
                                     <li><a data-toggle="tab" href="#menu1">Horana</a></li>
+                                    <li><a data-toggle="tab" href="#menu3">Piliyandala</a></li>
                                    
                                 </ul>
 
@@ -1696,7 +1697,165 @@ $date_setter = date("Y-m-d");
                                         </div>
 
                                     </div>
-                                    
+                                    <div id="menu3" class="tab-pane fade">
+
+                                        <form method="post" action="#">
+                                            <div class="col-sm-6">
+
+                                                <fieldset id="account">
+                                                    <legend style="color: white">Search Option 01</legend>
+                                                    <div class="form-group required">
+                                                        <label class="control-label">Search by:</label>
+
+                                                        <select name="cbopayment" id="input-search-option" class="form-control" required onchange="setServiceOptionPanel();">
+                                                            <option value=""> --- Please Select --- </option>
+                                                            <option value="all">All</option>
+                                                            <option value="nic">Customer NIC</option>
+                                                            <option value="tp">Phone Number</option>
+                                                            <option value="sno">Service Number</option>
+                                                            <option value="vno">Vehicle Number</option>
+                                                        </select>
+                                                        <?php
+                                                        if (isset($_POST['cbopayment'])) {
+
+                                                            $com_vehi = $_POST['cbopayment'];
+                                                        }
+                                                        ?>
+
+
+
+                                                    </div>
+
+                                                </fieldset>
+                                            </div>
+
+                                            <fieldset id="account">
+                                                <legend style="color: white">Search Option 02</legend>
+
+
+                                                <div class="form-group required">
+                                                    <label class="control-label" for="input-email">Search Here:</label>
+                                                    <br/>
+                                                    <input type="text" name="fname" id="fname" value="" placeholder="Search Here" id="input-email" class="form-control" maxlength="10" style="width: 400px;float: left" required />
+                                                    <p style="color: white;float: left;">as</p>
+                                                    <button type="submit" name="search_buton"  id="cservicebtn" method="post" class="btn btn">Search</button>
+
+                                                </div>
+
+
+
+
+                                            </fieldset>
+                                        </form>
+
+                                        <?php
+                                        $pagination = new Zebra_Pagination();
+                                        $sql_query3 = "";
+
+                                        if (isset($_POST['search_buton'])) {
+                                            if ($com_vehi == "sno") {
+
+                                                $sql_query3 = "SELECT SQL_CALC_FOUND_ROWS a.cus_id,c.`ser_number`,c.vehicle_no,a.cus_fullname,a.cus_nic,a.cus_address,a.cus_reg_date,a.cus_tp FROM customer a INNER JOIN `service` c ON a.`cus_nic`=c.`cus_nic` WHERE c.`ser_number`='" . $_POST['fname'] . "' LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            } elseif ($com_vehi == "tp") {
+                                                $sql_query3 = "SELECT SQL_CALC_FOUND_ROWS a.cus_id,a.cus_fullname,c.vehicle_no,a.cus_nic,a.cus_address,a.cus_reg_date,a.cus_tp,c.`ser_number` FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE a.`cus_tp`='" . $_POST['fname'] . "' LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            } elseif ($com_vehi == "nic") {
+                                                $sql_query3 = "SELECT SQL_CALC_FOUND_ROWS a.cus_id,a.cus_fullname,c.vehicle_no,a.cus_nic,a.cus_address,a.cus_reg_date,a.cus_tp,c.`ser_number` FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE a.`cus_nic`='" . $_POST['fname'] . "' LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            } elseif ($com_vehi == "vno") {
+                                                $sql_query3 = "SELECT SQL_CALC_FOUND_ROWS a.cus_id,a.cus_fullname,c.vehicle_no,a.cus_nic,a.cus_address,a.cus_reg_date,a.cus_tp,c.`ser_number` FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE c.vehicle_no='" . $_POST['fname'] . "' LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            } elseif ($com_vehi == "all") {
+                                                $sql_query3 = "SELECT SQL_CALC_FOUND_ROWS a.cus_id,a.cus_fullname,a.cus_nic,a.cus_address,a.cus_reg_date,a.cus_tp,c.`ser_number`,c.vehicle_no FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE ser_number LIKE 'PLD%'  ORDER BY c.`ser_number` LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                            }
+                                        } else {
+                                            $sql_query3 = "SELECT SQL_CALC_FOUND_ROWS a.cus_id,a.cus_fullname,a.cus_nic,a.cus_address,a.cus_reg_date,a.cus_tp,c.`ser_number`,c.vehicle_no FROM customer a INNER JOIN service c ON a.cus_nic=c.cus_nic WHERE ser_number LIKE 'PLD%'  ORDER BY c.`ser_number` LIMIT " . (($pagination->get_page() - 1) * $records_per_page) . "," . $records_per_page;
+                                        }
+
+
+
+                                        $result3 = mysqli_query($d_bc, $sql_query3);
+                                        $service_co3 = mysqli_num_rows($result3);
+                                        if (!($result3)) {
+
+                                            //stop execution and display error message
+                                            die(mysql_error());
+                                        }
+                                        $rows3 = mysqli_fetch_assoc(mysqli_query($d_bc, 'SELECT FOUND_ROWS() AS rows'));
+                                        $pagination->records($rows3['rows']);
+                                        $pagination->records_per_page($records_per_page);
+                                        ?>
+                                        <br/>
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Service Number</th>
+                                                        <th>Full Name</th>
+                                                        <th>NIC</th>
+                                                        <th>Vehicle Number</th>
+                                                        <th>Permanent Address</th>
+                                                        <th>Registration Date</th>
+                                                        <th>Phone Number</th>
+                                                        <th>View More</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $index = 0;
+                                                    $i = 1;
+                                                    ?>
+                                                    <?php while ($row3 = mysqli_fetch_assoc($result3)): ?>
+                                                        <tr<?php echo $index++ % 2 ? ' class="even"' : '' ?> onclick="readValues(this)">
+
+
+                                                            <td><?php echo $row3['ser_number'] ?></td>
+                                                            <td><?php echo $row3['cus_fullname'] ?></td>
+                                                            <td><?php echo $row3['cus_nic'] ?></td>
+                                                            <td><?php echo $row3['vehicle_no'] ?></td>
+                                                            <td><?php echo $row3['cus_address'] ?></td>
+                                                            <td><?php echo $row3['cus_reg_date'] ?></td>
+                                                            <td><?php echo $row3['cus_tp'] ?></td>
+                                                            <td><?php echo '<button type="submit" name="view" id="cservicebtn" method="post" class="btn btn">View</button>' ?></td>
+                                                        </tr>
+                                                        <?php $i++; ?>
+                                                    <?php endwhile ?>
+                                                </tbody>
+                                            </table>
+                                            <div class="text-center">
+                                                <nav> <ul class="pagination"><li> <?php $pagination->render(); ?></li></ul></nav>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="form-inline">
+
+
+                                                        <script>
+                                                            
+                                                            var cel;
+                                                            function readValues(x) {
+                                                                
+                                                                cel = x.cells[3].innerHTML;
+                                                                var cus_id = cel.substring(cel.lastIndexOf("#") + 3, cel.lastIndexOf("<"));
+                                                                // alert(cus_id);
+                                                                window.location.href = "customer_installment_set.php?ser_number=" + cel;
+                                                            }
+                                                        </script>                                           
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--                                <div class="col-sm-12">
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-body" style="height: 250px;">
+                                            
+                                            
+                                            
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>-->
+                                        </div>
+
+                                    </div>
                                     
                                 </div>
 

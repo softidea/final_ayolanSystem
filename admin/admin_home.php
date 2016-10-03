@@ -102,7 +102,7 @@ if (isset($_SESSION['user_email']) && ($_SESSION['user_status']==="Active") && (
                             <div class="list-group">
                                 <a href="" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Vehicle Lease Reports</button></a>
                                 <a href="" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Land Pawn Reports</button></a>
-                                <a href="" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Customer Reports</button></a>
+                                <a href="user_management/view_dailyIncome_report.php" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Customer Income Reports</button></a>
                                 <a href="" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Vehicle Rate Reports</button></a>
                                 <a href="" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">Land Rate Reports</button></a>
                                 <a href="" style="text-decoration: none;"><button type="button" class="list-group-item" id="listButton">User Reports</button></a>
